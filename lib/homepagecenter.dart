@@ -11,7 +11,7 @@ class homepagecenter extends StatefulWidget {
 }
 
 class _homepagecenterState extends State<homepagecenter> {
-  int check = 0;
+  int check = 1;
   double sz1 = 40;
   double sz2 = 40;
   double sz3 = 40;
@@ -193,7 +193,7 @@ class _homepagecenterState extends State<homepagecenter> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         check == 1
-                            ? bookListView()
+                            ? movieListView()
                             : (check == 2 ? bookListView() : musicListView())
                       ],
                     )
