@@ -193,7 +193,7 @@ class _homepagecenterState extends State<homepagecenter> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         check == 1
-                            ? movieListView()
+                            ? bookListView()
                             : (check == 2 ? bookListView() : musicListView())
                       ],
                     )

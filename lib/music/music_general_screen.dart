@@ -25,78 +25,75 @@ class _MusicGeneralScreenState extends State<MusicGeneralScreen> {
           currentFocus.unfocus();
         }
       },
-      child: DefaultTabController(
-        length: 3,
-        child: SafeArea(
-          child: Scaffold(
+      child: SafeArea(
+        child: Scaffold(
+            backgroundColor: Color(0x0D0C3EFF),
+            appBar: AppBar(
               backgroundColor: Color(0x0D0C3EFF),
-              appBar: AppBar(
-                backgroundColor: Color(0x0D0C3EFF),
-                title: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(51, 58, 76, 255),
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: TextField(
-                      autofocus: false,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.white38,
-                          ),
-                          onPressed: () {},
+              title: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(51, 58, 76, 255),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: TextField(
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          Icons.search,
+                          color: Colors.white38,
                         ),
-                        labelText: 'Search',
-                        labelStyle: TextStyle(color: Colors.white38),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
+                        onPressed: () {},
+                      ),
+                      labelText: 'Search',
+                      labelStyle: TextStyle(color: Colors.white38),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       ),
                     ),
                   ),
                 ),
-                leading: Icon(Icons.menu),
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.notifications,
-                    ),
-                  ),
-                ],
-                flexibleSpace: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Color(0x0D0C3EFF), Colors.brown.shade700],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+              ),
+              leading: Icon(Icons.menu),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications,
                   ),
                 ),
-                /*bottom: TabBar(
-                    indicatorColor: Colors.white,
-                    tabs: [
-                      Tab(icon: Icon(Icons.home), text: 'Home'),
-                      Tab(icon: Icon(Icons.star), text: 'Favourites'),
-                      Tab(
-                          icon: Icon(Icons.music_note_sharp),
-                          text: 'Today\'s Music'),
-                    ],
-                  )*/
+              ],
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0x0D0C3EFF), Colors.brown.shade700],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
               ),
-              body: widget
-                  .buildPage /*TabBarView(
-                children: [
-                  buildPage1(),
-                  buildPage2(),
-                  buildPage3(),
-                ],
-              )*/
-              ),
-        ),
+              /*bottom: TabBar(
+                  indicatorColor: Colors.white,
+                  tabs: [
+                    Tab(icon: Icon(Icons.home), text: 'Home'),
+                    Tab(icon: Icon(Icons.star), text: 'Favourites'),
+                    Tab(
+                        icon: Icon(Icons.music_note_sharp),
+                        text: 'Today\'s Music'),
+                  ],
+                )*/
+            ),
+            body: widget
+                .buildPage /*TabBarView(
+              children: [
+                buildPage1(),
+                buildPage2(),
+                buildPage3(),
+              ],
+            )*/
+            ),
       ),
     );
   }

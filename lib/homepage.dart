@@ -7,10 +7,11 @@ import 'package:riyym/music/buildpage1.dart';
 import 'package:riyym/music/buildpage2.dart';
 import 'package:riyym/music/buildpage3.dart';
 import 'package:riyym/music/music_general_screen.dart';
+import 'package:riyym/profile/main.dart';
 import 'package:riyym/registration_screen.dart';
 import 'bottomappbar.dart';
 import 'movie/film.dart';
-import 'music/infos/homepagecenter.dart';
+import 'homepagecenter.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
@@ -40,6 +41,7 @@ class _HomePageState extends State<HomePage> {
       buildPage: buildPage3(),
     ),
     homepagecenter(),
+    MyProfile(),
     loginScreen(),
     RegistrationScreen(),
     loginScreen(),
@@ -48,114 +50,117 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(100, 43, 43, 43),
-      body: _pages.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 75,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                iconSize: 30.0,
-                //padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(
-                  _selectedIndex == 3 || _selectedIndex == 0
-                      ? Icons.movie
-                      : (_selectedIndex == 2 ||
-                              _selectedIndex == 4 ||
-                              _selectedIndex == 5 ||
-                              _selectedIndex == 6
-                          ? Icons.library_music
-                          : Icons.book),
-                  color: _selectedIndex == 0 ||
-                          _selectedIndex == 1 ||
-                          _selectedIndex == 2 ||
-                          _selectedIndex == 4
-                      ? Colors.amber
-                      : Colors.white,
+        backgroundColor: const Color.fromARGB(100, 43, 43, 43),
+        body: _pages.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.transparent.withOpacity(0.3),
+          shape: CircularNotchedRectangle(),
+          child: Container(
+            height: 75,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 30.0,
+                  //padding: EdgeInsets.only(right: 28.0),
+                  icon: Icon(
+                    _selectedIndex == 3 || _selectedIndex == 0
+                        ? Icons.movie
+                        : (_selectedIndex == 2 ||
+                                _selectedIndex == 4 ||
+                                _selectedIndex == 5 ||
+                                _selectedIndex == 6
+                            ? Icons.library_music
+                            : Icons.book),
+                    color: _selectedIndex == 0 ||
+                            _selectedIndex == 1 ||
+                            _selectedIndex == 2 ||
+                            _selectedIndex == 4
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (_selectedIndex == 2 ||
+                          _selectedIndex == 4 ||
+                          _selectedIndex == 5 ||
+                          _selectedIndex == 6) {
+                        _selectedIndex = 4;
+                      } else if (_selectedIndex == 3) _selectedIndex = 0;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    if (_selectedIndex == 2 ||
-                        _selectedIndex == 4 ||
-                        _selectedIndex == 5 ||
-                        _selectedIndex == 6) {
-                      _selectedIndex = 4;
-                    } else if (_selectedIndex == 3) _selectedIndex = 0;
-                  });
-                },
-              ),
-              IconButton(
-                iconSize: 30.0,
-                // padding: EdgeInsets.only(left: 28.0),
-                icon: Icon(
-                  _selectedIndex == 3
-                      ? Icons.book
-                      : ((_selectedIndex == 2 ||
-                              _selectedIndex == 4 ||
-                              _selectedIndex == 5 ||
-                              _selectedIndex == 6)
-                          ? Icons.turned_in
-                          : Icons.favorite),
-                  color: _selectedIndex == 5 ? Colors.amber : Colors.white,
+                IconButton(
+                  iconSize: 30.0,
+                  // padding: EdgeInsets.only(left: 28.0),
+                  icon: Icon(
+                    _selectedIndex == 3
+                        ? Icons.book
+                        : ((_selectedIndex == 2 ||
+                                _selectedIndex == 4 ||
+                                _selectedIndex == 5 ||
+                                _selectedIndex == 6)
+                            ? Icons.turned_in
+                            : Icons.favorite),
+                    color: _selectedIndex == 5 ? Colors.amber : Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (_selectedIndex == 2 ||
+                          _selectedIndex == 4 ||
+                          _selectedIndex == 5 ||
+                          _selectedIndex == 6) {
+                        _selectedIndex = 5;
+                      } else if (_selectedIndex == 3) _selectedIndex = 1;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    if (_selectedIndex == 2 ||
-                        _selectedIndex == 4 ||
-                        _selectedIndex == 5 ||
-                        _selectedIndex == 6) {
-                      _selectedIndex = 5;
-                    } else if (_selectedIndex == 3) _selectedIndex = 1;
-                  });
-                },
-              ),
-              IconButton(
-                iconSize: 30.0,
-                //padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(
-                  _selectedIndex == 3 ? Icons.music_note : Icons.shuffle,
-                  color: _selectedIndex == 6 ? Colors.amber : Colors.white,
+                IconButton(
+                  iconSize: 30.0,
+                  //padding: EdgeInsets.only(right: 28.0),
+                  icon: Icon(
+                    _selectedIndex == 3 ? Icons.music_note : Icons.shuffle,
+                    color: _selectedIndex == 6 ? Colors.amber : Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (_selectedIndex == 2 ||
+                          _selectedIndex == 4 ||
+                          _selectedIndex == 5 ||
+                          _selectedIndex == 6) {
+                        _selectedIndex = 6;
+                      } else if (_selectedIndex == 3) _selectedIndex = 2;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    if (_selectedIndex == 2 ||
-                        _selectedIndex == 4 ||
-                        _selectedIndex == 5 ||
-                        _selectedIndex == 6) {
-                      _selectedIndex = 6;
-                    } else if (_selectedIndex == 3) _selectedIndex = 2;
-                  });
-                },
-              ),
-              IconButton(
-                iconSize: 30.0,
-                //padding: EdgeInsets.only(left: 28.0),
-                icon: Icon(
-                  _selectedIndex == 3 ? Icons.home : Icons.exit_to_app,
-                  color: _selectedIndex == 3 ? Colors.amber : Colors.white,
+                IconButton(
+                  iconSize: 30.0,
+                  //padding: EdgeInsets.only(left: 28.0),
+                  icon: Icon(
+                    _selectedIndex == 3 ? Icons.home : Icons.exit_to_app,
+                    color: _selectedIndex == 3 ? Colors.amber : Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 3;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 3;
-                  });
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      //bottomNavigationBar: const BtappBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => showFullScreenMenu(context),
-        child: const Icon(Icons.menu),
-      ),
-    );
+        //bottomNavigationBar: const BtappBar(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          onPressed: () => showFullScreenMenu(context),
+          child: const Icon(
+            Icons.menu,
+            color: Colors.black,
+          ),
+        ));
   }
 
   void showFullScreenMenu(BuildContext context) {
@@ -202,6 +207,11 @@ class _HomePageState extends State<HomePage> {
           icon: const Icon(Icons.person, color: Colors.white),
           text: const Text('My Account', style: TextStyle(color: Colors.white)),
           gradient: deepPurpleGradient,
+          onTap: () {
+            setState(() {
+              _selectedIndex = 8;
+            });
+          },
         ),
         const FSMenuItem(
           icon: Icon(Icons.settings, color: Colors.white),

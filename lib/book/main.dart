@@ -29,12 +29,14 @@ class _MyBookAppState extends State<MyBookApp> {
               resizeToAvoidBottomInset: false,
               backgroundColor: const Color.fromARGB(19, 30, 52, 255),
               appBar: const Appbar(),
-              body: Column(
-                children: const [
-                  MyBooks(),
-                  Recommended(),
-                  //BottomMenu(),
-                ],
+              body: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    MyBooks(),
+                    Recommended(),
+                    //BottomMenu(),
+                  ],
+                ),
               ))),
     );
   }

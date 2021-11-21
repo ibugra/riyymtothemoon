@@ -39,6 +39,7 @@ class _FilmState extends State<Film> {
             title: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: Container(
+                height: 35,
                 decoration: const BoxDecoration(
                     color: Color.fromARGB(51, 58, 76, 255),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -73,7 +74,7 @@ class _FilmState extends State<Film> {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0x0D0C3EFF), Colors.brown.shade700],
+                  colors: [Colors.brown.shade700, Colors.black],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -119,177 +120,188 @@ class _FilmState extends State<Film> {
           ),*/
           backgroundColor: Colors.black,
           //body: Film(),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 12.0),
-            child: ListView(
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CarouselSlider.builder(
-                        options: CarouselOptions(
-                          height: 220,
-                          autoPlay: true,
-                          autoPlayAnimationDuration: Duration(seconds: 2),
-                          enlargeCenterPage: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.height,
-                          onPageChanged: (index, reason) =>
-                              setState(() => activeIndex = index),
-                        ),
-                        itemCount: continueWatching.length,
-                        itemBuilder: (context, index, realIndex) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DetailMoviePage(
-                                    continueWatching[index],
+          body: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.black,
+                Colors.brown,
+              ],
+            )),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: ListView(
+                children: [
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CarouselSlider.builder(
+                          options: CarouselOptions(
+                            height: 220,
+                            autoPlay: true,
+                            autoPlayAnimationDuration: Duration(seconds: 2),
+                            enlargeCenterPage: true,
+                            enlargeStrategy: CenterPageEnlargeStrategy.height,
+                            onPageChanged: (index, reason) =>
+                                setState(() => activeIndex = index),
+                          ),
+                          itemCount: continueWatching.length,
+                          itemBuilder: (context, index, realIndex) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailMoviePage(
+                                      continueWatching[index],
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
-                                //color: Colors.grey,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                    continueWatching[index].imgPoster,
+                                );
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 15.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(60),
+                                  //color: Colors.grey,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      continueWatching[index].imgPoster,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
 
-                        /*itemCount: images.length,
-                        itemBuilder: (context, index, realIndex) {
-                          final image = images[index];
-                          return buildImage(image, index);
-                        },*/
-                      ),
-                      buildIndicator(),
-                    ],
+                          /*itemCount: images.length,
+                          itemBuilder: (context, index, realIndex) {
+                            final image = images[index];
+                            return buildImage(image, index);
+                          },*/
+                        ),
+                        buildIndicator(),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 10.0),
-                Container(
-                  height: 40.0,
-                  width: double.infinity,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      InkWell(
-                        borderRadius: BorderRadius.circular(25),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Chip(
-                            label: Text(
-                              "All",
-                              style: TextStyle(color: Colors.white),
+                  SizedBox(height: 10.0),
+                  Container(
+                    height: 40.0,
+                    width: double.infinity,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Chip(
+                              label: Text(
+                                "All",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black87,
+                              padding: EdgeInsets.only(left: 12.0, right: 12.0),
                             ),
-                            backgroundColor: Colors.indigo,
-                            padding: EdgeInsets.only(left: 12.0, right: 12.0),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(25),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Chip(
-                            label: Text(
-                              "Action",
-                              style: TextStyle(color: Colors.white),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Chip(
+                              label: Text(
+                                "Action",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black87,
+                              padding: EdgeInsets.only(left: 12.0, right: 12.0),
                             ),
-                            backgroundColor: Colors.indigo,
-                            padding: EdgeInsets.only(left: 12.0, right: 12.0),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(25),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Chip(
-                            label: Text(
-                              "Adventure",
-                              style: TextStyle(color: Colors.white),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Chip(
+                              label: Text(
+                                "Adventure",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black87,
+                              padding: EdgeInsets.only(left: 12.0, right: 12.0),
                             ),
-                            backgroundColor: Colors.indigo,
-                            padding: EdgeInsets.only(left: 12.0, right: 12.0),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(25),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Chip(
-                            label: Text(
-                              "Comedie",
-                              style: TextStyle(color: Colors.white),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Chip(
+                              label: Text(
+                                "Comedie",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black87,
+                              padding: EdgeInsets.only(left: 12.0, right: 12.0),
                             ),
-                            backgroundColor: Colors.indigo,
-                            padding: EdgeInsets.only(left: 12.0, right: 12.0),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(25),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Chip(
-                            label: Text(
-                              "Sci-Fi",
-                              style: TextStyle(color: Colors.white),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(25),
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Chip(
+                              label: Text(
+                                "Sci-Fi",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black87,
+                              padding: EdgeInsets.only(left: 12.0, right: 12.0),
                             ),
-                            backgroundColor: Colors.indigo,
-                            padding: EdgeInsets.only(left: 12.0, right: 12.0),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                movieListView(),
+                  movieListView(),
 
-                /*Container(
-                  width: double.infinity,
-                  height: 230.0,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: MovieCard('1917', '8.3/10', 'images/film1.jpg'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: MovieCard(
-                            'Avengers: Endgame', '8.4/10', 'images/film2.jpg'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: MovieCard('Room', '8.1/10', 'images/film3.jpg'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: MovieCard(
-                            'Dune: Part One', '8.2/10', 'images/film4.jpg'),
-                      ),
-                    ],
-                  ),
-                ),*/
-              ],
+                  /*Container(
+                    width: double.infinity,
+                    height: 230.0,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: MovieCard('1917', '8.3/10', 'images/film1.jpg'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: MovieCard(
+                              'Avengers: Endgame', '8.4/10', 'images/film2.jpg'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: MovieCard('Room', '8.1/10', 'images/film3.jpg'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: MovieCard(
+                              'Dune: Part One', '8.2/10', 'images/film4.jpg'),
+                        ),
+                      ],
+                    ),
+                  ),*/
+                ],
+              ),
             ),
           ),
           /*bottomNavigationBar: BottomNavigationBar(

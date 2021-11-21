@@ -90,7 +90,7 @@ class bookListView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < 4 ? Icons.star : Icons.star_border,
+                                index < 3 ? Icons.star : Icons.star_border,
                                 size: 30,
                                 color: Colors.white,
                               );
@@ -158,7 +158,7 @@ class bookListView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: List.generate(5, (index) {
                               return Icon(
-                                index < 4 ? Icons.star : Icons.star_border,
+                                index < 5 ? Icons.star : Icons.star_border,
                                 size: 30,
                                 color: Colors.white,
                               );
