@@ -91,9 +91,9 @@ var popularMovie = [
   ),
 ];
 
-var nowShowing = [
+List<Movie> nowShowing = [
   Movie(
-    title: "Aladin",
+    title: "Alaadin",
     genre: "Action",
     imgPoster: "images/aladin-poster.jpg",
     minute: 180,

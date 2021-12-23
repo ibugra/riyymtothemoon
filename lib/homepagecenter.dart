@@ -3,6 +3,8 @@ import 'package:riyym/book/mybooks.dart';
 import 'package:riyym/movie/film.dart';
 import 'package:riyym/music/buildpage1.dart';
 
+import 'movie/movie.dart';
+
 class homepagecenter extends StatefulWidget {
   const homepagecenter({Key? key}) : super(key: key);
 
@@ -193,8 +195,10 @@ class _homepagecenterState extends State<homepagecenter> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         check == 1
-                            ? movieListView()
-                            : (check == 2 ? bookListView() : musicListView())
+                            ? bookListView()
+                            : (check == 2
+                                ? const bookListView()
+                                : const musicListView())
                       ],
                     )
                   ],
