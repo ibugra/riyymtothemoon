@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'now_showing.dart';
+
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailMoviePage extends StatefulWidget {
   final Movies movie;
@@ -11,6 +16,26 @@ class DetailMoviePage extends StatefulWidget {
 }
 
 class _DetailMoviePageState extends State<DetailMoviePage> {
+  /* _launchURL(String url) async {
+  if (Platform.isIOS) {
+    if (await canLaunch('https://www.youtube.com/watch?v=$url')) {
+      await launch('https://www.youtube.com/watch?v=$url', forceSafariVC: false);
+    } else {
+      if (await canLaunch('https://www.youtube.com/watch?v=$url')) {
+        await launch('https://www.youtube.com/watch?v=$url');
+      } else {
+        throw 'Could not launch https://www.youtube.com/watch?v=$url';
+      }
+    }
+  } else {
+    url = 'https://www.youtube.com/watch?v=$url';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+}
+ }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +121,7 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                             fontSize: 17,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         ...List.generate(
                           5,
                           (index) => Icon(
@@ -109,7 +134,7 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.play_circle_outlined),
+                          icon: const Icon(Icons.play_circle_outlined),
                           iconSize: 40,
                           color: Colors.blue,
                         )
@@ -120,8 +145,8 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Text(
               "Overview",
               style: TextStyle(
@@ -135,7 +160,7 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
             padding: const EdgeInsets.only(left: 15, top: 10),
             child: Text(
               widget.movie.overview,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
               ),

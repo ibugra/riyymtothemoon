@@ -25,6 +25,7 @@ class _MyBookAppState extends State<MyBookApp> {
         }
       },
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: Scaffold(
               resizeToAvoidBottomInset: false,
               backgroundColor: const Color.fromARGB(19, 30, 52, 255),

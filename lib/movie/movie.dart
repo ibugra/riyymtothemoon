@@ -142,7 +142,7 @@ var continueWatching = [
   Movie(
     title: "1917",
     genre: "Action",
-    imgPoster: "images/1917.jpg",
+    imgPoster: "images/wonder-woman-poster.jpg",
     minute: 119,
     rating: 8.3,
     year: 2019,
@@ -160,7 +160,7 @@ var continueWatching = [
   Movie(
     title: "Avengers: Endgame",
     genre: "Action",
-    imgPoster: "images/endgame.jpg",
+    imgPoster: "images/wonder-woman-poster.jpg",
     minute: 181,
     rating: 8.4,
     year: 2019,

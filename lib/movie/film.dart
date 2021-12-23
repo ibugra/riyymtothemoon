@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'detail_movie_page.dart';
-import 'movie.dart';
+//import 'movie.dart';
 import 'now_showing.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,12 +17,6 @@ class Film extends StatefulWidget {
 class _FilmState extends State<Film> {
   int currentIndex = 0;
   int activeIndex = 0;
-  final images = [
-    'images/1917.jpg',
-    'images/endgame.jpg',
-    'images/room.jpg',
-    'images/dune.png'
-  ];
 
   @override
   void initState() {
@@ -43,6 +37,7 @@ class _FilmState extends State<Film> {
         }
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             backgroundColor: const Color(0x0D0C3EFF),
@@ -141,26 +136,26 @@ class _FilmState extends State<Film> {
                       onPageChanged: (index, reason) =>
                           setState(() => activeIndex = index),
                     ),
-                    itemCount: continueWatching.length,
+                    itemCount: list.length,
                     itemBuilder: (context, index, realIndex) {
                       return GestureDetector(
-                        /*onTap: () {
+                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => DetailMoviePage(
-                                continueWatching[index],
+                                list[index],
                               ),
                             ),
                           );
-                        },*/
+                        },
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 15.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(60),
                             image: DecorationImage(
-                              image: AssetImage(
-                                continueWatching[index].imgPoster,
+                              image: NetworkImage(
+                                list[index].poster,
                               ),
                             ),
                           ),
@@ -168,7 +163,7 @@ class _FilmState extends State<Film> {
                       );
                     },
                   ),
-                  buildIndicator(),
+                  buildIndicator(list),
                 ],
               ),
             ),
@@ -266,9 +261,9 @@ class _FilmState extends State<Film> {
     );
   }
 
-  Widget buildIndicator() => AnimatedSmoothIndicator(
+  Widget buildIndicator(List<Movies> list) => AnimatedSmoothIndicator(
         activeIndex: activeIndex,
-        count: continueWatching.length,
+        count: list.length,
         effect: const JumpingDotEffect(
           dotColor: Colors.white,
           activeDotColor: Colors.redAccent,
@@ -315,7 +310,7 @@ class movieListView extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
-                        list[index].poster,
+                        list[index].year,
                       ),
                     ),
                   ),
@@ -330,7 +325,7 @@ class movieListView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.clip,
                   ),
                 )
