@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'movie.dart';
+
+import 'now_showing.dart';
 
 class DetailMoviePage extends StatefulWidget {
-  final Movie movie;
+  final Movies movie;
 
   DetailMoviePage(this.movie);
   @override
@@ -18,7 +19,7 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
         elevation: 0,
         title: Text(
           widget.movie.title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -37,111 +38,110 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
       backgroundColor: Colors.black87,
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 500,
-              width: MediaQuery.of(context).size.width,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Container(
+            height: 500,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  widget.movie.poster,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    widget.movie.imgPoster,
-                  ),
-                  fit: BoxFit.cover,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black87,
+                    //Colors.lightBlueAccent.withOpacity(0.8),
+                    //Colors.lightBlueAccent.withOpacity(0.6),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
                 ),
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.black87,
-                      //Colors.lightBlueAccent.withOpacity(0.8),
-                      //Colors.lightBlueAccent.withOpacity(0.6),
-                      Colors.transparent,
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 15, bottom: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.movie.title,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 15, bottom: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.movie.title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: 5),
-                      Text(
-                        "${widget.movie.year}, ${widget.movie.genre}, ${widget.movie.minute} Min.",
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    SizedBox(height: 5),
+                    /*Text(
+                      "${widget.movie.year}, ${widget.movie.title}, ${widget.movie.title} Min.",
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Text(
-                            widget.movie.rating.toString(),
-                            style: TextStyle(
-                              color: Colors.yellow,
-                              fontSize: 17,
-                            ),
+                    ),*/
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          widget.movie.vote_average.toString(),
+                          style: const TextStyle(
+                            color: Colors.yellow,
+                            fontSize: 17,
                           ),
-                          SizedBox(width: 5),
-                          ...List.generate(
-                            5,
-                            (index) => Icon(
-                              Icons.star,
-                              color: (index < (widget.movie.rating / 2).floor())
-                                  ? Colors.yellow
-                                  : Colors.white30,
-                            ),
+                        ),
+                        SizedBox(width: 5),
+                        ...List.generate(
+                          5,
+                          (index) => Icon(
+                            Icons.star,
+                            color: (index <
+                                    (widget.movie.vote_average / 2).floor())
+                                ? Colors.yellow
+                                : Colors.white30,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.play_circle_outlined),
-                            iconSize: 40,
-                            color: Colors.blue,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.play_circle_outlined),
+                          iconSize: 40,
+                          color: Colors.blue,
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Text(
-                "Overview",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Text(
+              "Overview",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, top: 10),
-              child: Text(
-                widget.movie.overview,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, top: 10),
+            child: Text(
+              widget.movie.overview,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
               ),
             ),
-            if (widget.movie.casts.length > 0) ...[
+          ),
+          /*if (widget.movie.casts.length > 0) ...[
               Padding(
                 padding: const EdgeInsets.only(left: 15, top: 15),
                 child: Text(
@@ -189,10 +189,8 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                     );
                   },
                 ),
-              )
-            ]
-          ],
-        ),
+              )*/
+        ]),
       ),
     );
   }
