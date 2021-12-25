@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "644441471062",
-    "project_id": "riyym-7030e",
-    "storage_bucket": "riyym-7030e.appspot.com"
+    "project_number": "390992390831",
+    "project_id": "riyym-50ddb",
+    "storage_bucket": "riyym-50ddb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:644441471062:android:42e7f90c685829a99423f7",
+        "mobilesdk_app_id": "1:390992390831:android:c1d4db7c50b8fd6c9cc25a",
         "android_client_info": {
           "package_name": "com.example.riyym"
         }
       },
       "oauth_client": [
         {
-          "client_id": "644441471062-b7uf145g2ri4h4nomj9lf6p0fngs35kt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.riyym",
-            "certificate_hash": "3f627f06f76ed0f75d3a6ee62f3778de20d09671"
-          }
-        },
-        {
-          "client_id": "644441471062-fine53sqjilejjk33v06tln9oe5ptnv1.apps.googleusercontent.com",
+          "client_id": "390992390831-9napiphldda5hdfgn534sabefvhciab0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJQDgVLfe8sHZCGk7NWdpehpmo4I-L048"
+          "current_key": "AIzaSyDZWSdnfaoTJbCoR6tBImPEl75tsXZW0ms"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "644441471062-fine53sqjilejjk33v06tln9oe5ptnv1.apps.googleusercontent.com",
+              "client_id": "390992390831-9napiphldda5hdfgn534sabefvhciab0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
